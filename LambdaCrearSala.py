@@ -71,7 +71,8 @@ def lambda_handler(event, context):
             "tenant_id": tenant_id,
             "departamento": departamento,
             "provincia": provincia,
-            "distrito": distrito
+            "distrito": distrito,
+            "motivo": "verificar"
         }
         )
 
@@ -82,7 +83,7 @@ def lambda_handler(event, context):
         )
 
         buscar_cine_data = json.loads(buscar_cine_response['Payload'].read())
-
+        print(buscar_cine_data)
         # Revisar si el cine existe
         if buscar_cine_data['statusCode'] != 200 or not buscar_cine_data['data']:
             return {
